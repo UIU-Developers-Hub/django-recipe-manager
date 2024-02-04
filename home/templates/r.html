@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container mt-5">
+
+    <form class="mb-3 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+        <div >
+            <h2>Add Receipe</h2>
+          <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+          <input name="r_name"  type="text" class="form-control">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+          <textarea name="r_description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+            <input name="r_img" type="file" class="form-control" >
+          </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+</div>
+{% endblock %}

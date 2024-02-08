@@ -20,7 +20,7 @@ from home.views import receipes
 from index.views import inde
 urlpatterns = [
      path('',inde),
-     path('h/',receipes),
+     path('h/',receipes), #receipes is funtion name#
     path('admin/', admin.site.urls),
     
    

@@ -4,21 +4,25 @@
 <div class="container mt-5">
 
     <form class="mb-3 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+       <!-- have to use method="POST" enctype="multipart/form-data" else it wont work  -->
+       <!-- enctype="multipart/form-data if we do not use it file image wont be uploaded-->
          {% csrf_token %}
+         <!-- to prevent csrf attack -->
         <div >
             <h2>Add Receipe</h2>
           <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
-          <input name="r_name"  type="text" class="form-control">
-          
+          <input name="Receipe__name"  type="text" class="form-control">
+           <!--In HTML forms, the name attribute is used to identify form controls (such as input fields, textarea, and select dropdowns) when the form is submitted. 
+            When the form is submitted, the data from these form controls is sent to the server, where it can be processed.-->
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
-          <textarea name="r_description" class="form-control"></textarea>
+          <textarea name="Receipe_description" class="form-control"></textarea>
         </div>
 
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
-            <input name="r_img" type="file" class="form-control" >
+            <input name="Receipe_img" type="file" class="form-control" >
           </div>
       
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -26,4 +30,27 @@
 
 
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Receipe Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in X %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{r.r_name}}</td>
+      <td>{{r.r_des}}</td>
+      <td>{{r.r_img}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+
 {% endblock %}

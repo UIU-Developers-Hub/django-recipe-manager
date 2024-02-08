@@ -1,23 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Rm
 
-def receipes(request):
+def receipes(request): #function name receipes#
     if request.method == 'POST':
         data = request.POST
-        r_name = data.get('r_name')
-        r_des = data.get('r_des')
-        r_img = request.FILES.get('r_img')
-
-        # Validate form data
-        if r_name and r_des and r_img:
-            # Create a new Rm instance
-            Rm.objects.create(
-                r_name=r_name,
-                r_des=r_des,
-                r_img=r_img
-            )
-            # Redirect to a success page or another appropriate page
-
-        return redirect('/')   
-
-    return render(request, "r.html")
+        name = data.get('Receipe__name')
+        des = data.get('Receipe_description')
+        img = request.FILES.get('Receipe_img')
+        
+        #saving data in model
+        Rm.objects.create (
+            r_name = name,
+            r_des = des,
+            r_img = img
+        )
+     
+        # Redirect to a success page or another appropriate page
+        return redirect('/h')   
+    Z = Rm.objects.all()
+    context = {'X' : Z}
+        
+    
+    return render(request, "r.html" , context)

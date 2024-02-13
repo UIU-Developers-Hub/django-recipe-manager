@@ -8,6 +8,7 @@
        <!-- enctype="multipart/form-data if we do not use it file image wont be uploaded-->
          {% csrf_token %}
          <!-- to prevent csrf attack -->
+      
         <div >
             <h2>Add Receipe</h2>
           <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
@@ -30,14 +31,28 @@
 
 
 </div>
+   
+<div class="mt-5">
+  <div class="mt-auto col-6">
+    <form>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"> Search Receipe</label>
+    <input name="Search"  type="text" class="form-control">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+  </div>
+</div>
 
-<table class="table">
-  <thead>
+<table class="table mt-5">
+  <thead >
     <tr>
       <th scope="col">#</th>
       <th scope="col">Receipe Name</th>
       <th scope="col">Description</th>
       <th scope="col">Image</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +61,12 @@
       <th scope="row">{{forloop.counter}}</th>
       <td>{{r.r_name}}</td>
       <td>{{r.r_des}}</td>
-      <td>{{r.r_img}}</td>
+      <td>
+        <img src="/media/{{r.r_img}}" style ="height : 100px"></td>
+        <td>
+          <a href="/dr/{{r.id}}" class="btn btn-danger m-2">Delete</a>
+          <a href="/ur/{{r.id}}" class="btn btn-success">update</a>
+        </td>
     </tr>
    {% endfor %}
   </tbody>

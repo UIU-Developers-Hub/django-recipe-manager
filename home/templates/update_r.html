@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container mt-5">
+
+    <form class="mb-3 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+       <!-- have to use method="POST" enctype="multipart/form-data" else it wont work  -->
+       <!-- enctype="multipart/form-data if we do not use it file image wont be uploaded-->
+         {% csrf_token %}
+         <!-- to prevent csrf attack -->
+        <div class="mb-3">
+            <h2>update Receipe</h2>
+          <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+          <input name="Receipe__name" value="{{X1.r_name}}"  type="text" class="form-control">
+           <!--In HTML forms, the name attribute is used to identify form controls (such as input fields, textarea, and select dropdowns) when the form is submitted. 
+            When the form is submitted, the data from these form controls is sent to the server, where it can be processed.-->
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+          <textarea name="Receipe_description"  class="form-control">{{X1.r_des}}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+            <input name="Receipe_img" type="file" class="form-control" >
+          </div>
+      
+        <button type="submit" class="btn btn-primary">update</button>
+      </form>
+
+
+</div>
+
+
+
+{% endblock %}

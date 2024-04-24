@@ -64,8 +64,8 @@
       <td>
         <img src="/media/{{r.r_img}}" style ="height : 100px"></td>
         <td>
-          <a href="/dr/{{r.id}}" class="btn btn-danger m-2">Delete</a>
-          <a href="/ur/{{r.id}}" class="btn btn-success">update</a>
+          <a href="{% url 'delete_res' r.id %}" class="btn btn-danger m-2">Delete</a>
+          <a href="{% url 'update_res' r.id %}" class="btn btn-success">update</a>
         </td>
     </tr>
    {% endfor %}

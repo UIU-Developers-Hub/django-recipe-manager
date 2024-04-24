@@ -16,7 +16,7 @@ def receipes(request): #function name receipes#
         )
      
         # Redirect to a success page or another appropriate page
-        return redirect('/h')   
+        return redirect('get_post_res')   
     Z = Rm.objects.all()
 
     if request.GET.get('Search'):
@@ -40,10 +40,10 @@ def update_res(request,id):
         if img:
          Z.r_img = img
         Z.save()
-        return redirect('/h')
+        return redirect('get_post_res')
     context = {'X1' : Z}
     return render(request, "update_r.html" , context)
 def delete_res(request, id):
      Z = Rm.objects.get(id = id)
      Z.delete()
-     return redirect('/h')
+     return redirect('get_post_res')
